@@ -9,37 +9,54 @@
 			"include": "#specialoperators"
 		},
 		{
-			"include": "#controlwords"
+			"include": "#evaluated"
+		},
+		{
+			"include": "#force-evaluated"
+		},
+		{
+			"include": "#keywords"
 		},
 		{
 			"include": "#strings"
 		},
 		{
 			"include": "#numbers"
+		},
+		{
+			"include": "#default"
 		}
 	],
 	"repository": {
-		"controlwords": {
+		"evaluated": {
 			"name": "keyword.control.dkls",
-			"match": "\\b(IF|ELIF|ELSE|REPEAT|FOR|WHILE) [A-Za-z]+\\b",
+			"match": "(IF|ELIF|ELSE|VAR)"
+		},
+		"force-evaluated": {
+			"include": "#numbers #default",
+			"match": "\\$ *.*"
+		},
+		"keywords": {
+			"name": "keyword.control.dkls",
+			"match": "\\b(ALT|ALTCHAR|ALTCODE|ALTSTRING|BREAKLOOP|BREAK_LOOP|CONTINUELOOP|CONTINUE_LOOP|CTRL|DEFAULTDELAY|DEFAULT_DELAY|DEFAULTDELAY|DELAY|ENTER|EXIST|EXTENDED|FUNC|FUNCTION|GUI|WINDOWS|META|IGNORE|MENU|NOTEXIST|NOT_EXIST|PASS|PRINT|REPEAT|FOR|RETURN|RET|RUN|SHIFT|START|STARTENV|STARTCODE|STRINGLN|STRING|SYSRQ|WHILE|WHITESPACE)\\b *(.*)",
+			"ends": "(\\n|\\r)",
 			"captures": {
-				"1":{
-					"name": "support.type.property-name"
+				"2": {
+					"name": "string.quoted.double.dkls"
 				}
 			}
 		},
 		"specialoperators": {
-			"name": "support.type.property-name",
-			"match": "\\b\\$.*\\b"
+			"name": "keyword.operator.new",
+			"match": "(\\$|,|\\+|-|\\*|/|%|=|==)"
 		},
 		"numbers": {
 			"name": "constant.numeric",
-			"match": "\\b[0-9+]\\b"
+			"match": "[0-9]+"
 		},
 		"comments": {
 			"name": "comment.line",
-			"begin": "\\b^REM\\b",
-			"end": "\\b.*$\\b"
+			"match": "REM .*+"
 		},
 		"strings": {
 			"name": "string.quoted.double.dkls",
@@ -51,6 +68,10 @@
 					"match": "\\\\."
 				}
 			]
+		},
+		"default": {
+			"name": "support.type.property-name",
+			"match": "[A-Za-z]"
 		}
 	},
 	"scopeName": "source.ducklingscript"
