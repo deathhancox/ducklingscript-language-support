@@ -1,0 +1,25 @@
+{
+  "name": "ducklingscript-language-support",
+  "displayName": "DucklingScript Language Support",
+  "description": "Quick and dirty implamentation to add DucklingScript syntax and coding compatability to VSCode (do not use this as a reference I have no idea what I'm doing!).",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.95.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "dkls",
+      "aliases": ["DucklingScript", "dkls"],
+      "extensions": [".txt",".dkls"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "dkls",
+      "scopeName": "source.ducklingscript",
+      "path": "./syntaxes/dkls.tmLanguage.json"
+    }]
+  }
+}
