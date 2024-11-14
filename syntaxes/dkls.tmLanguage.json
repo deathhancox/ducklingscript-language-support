@@ -3,7 +3,10 @@
 	"name": "DucklingScript",
 	"patterns": [
 		{
-			"include": "#comments"
+			"include": "#block-comments"
+		},
+		{
+			"include": "#line-comments"
 		},
 		{
 			"include": "#specialoperators"
@@ -16,6 +19,9 @@
 		},
 		{
 			"include": "#keywords"
+		},
+		{
+			"include": "stringblocks"
 		},
 		{
 			"include": "#strings"
@@ -46,6 +52,9 @@
 				}
 			}
 		},
+		"stringblocks": {
+			"name": "string.quoted.double.dkls"
+		},
 		"specialoperators": {
 			"name": "keyword.operator.new",
 			"match": "(\\$|,|\\+|-|\\*|/|%|=|==)"
@@ -54,9 +63,14 @@
 			"name": "constant.numeric",
 			"match": "[0-9]+"
 		},
-		"comments": {
+		"block-comments": {
+			"name": "comment.block",
+			"begin": "\\bREM\\b(\\n|\\r)",
+			"end": "^$"
+		},
+		"line-comments": {
 			"name": "comment.line",
-			"match": "REM .*+"
+			"match": "\\bREM\\b.*+"
 		},
 		"strings": {
 			"name": "string.quoted.double.dkls",
