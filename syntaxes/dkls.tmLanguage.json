@@ -65,12 +65,12 @@
 		},
 		"block-comments": {
 			"name": "comment.block",
-			"begin": "\\bREM\\b(\\n|\\r)",
-			"end": "^$"
+			"begin": "^(\\s*)REM\\s+.*(\\n|\\r)",
+			"end": "^\\1(?=\\S)"
 		},
 		"line-comments": {
 			"name": "comment.line",
-			"match": "\\bREM\\b.*+"
+			"match": "^REM\\b.*"
 		},
 		"strings": {
 			"name": "string.quoted.double.dkls",
