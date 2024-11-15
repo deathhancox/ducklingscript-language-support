@@ -65,7 +65,7 @@
 		},
 		"block-comments": {
 			"name": "comment.block",
-			"begin": "^(\\s*)REM\\s+.*(\\n|\\r)",
+			"begin": "^(\\s*)REM(\\s+|$).*(\\n|\\r)",
 			"end": "^\\1(?=\\S)"
 		},
 		"line-comments": {
