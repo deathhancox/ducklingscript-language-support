@@ -1,78 +1,96 @@
 {
 	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
 	"name": "DucklingScript",
+	"scopeName": "source.ducklingscript",
 	"patterns": [
 		{
-			"include": "#block-comments"
+			"include": "#comments"
 		},
 		{
-			"include": "#line-comments"
+			"include": "#simple-commands"
 		},
 		{
-			"include": "#specialoperators"
-		},
-		{
-			"include": "#evaluated"
+			"include": "#block-commands"
 		},
 		{
 			"include": "#force-evaluated"
 		},
 		{
-			"include": "#keywords"
+			"include": "#string-evaluation"
 		},
 		{
-			"include": "stringblocks"
-		},
-		{
-			"include": "#strings"
-		},
-		{
-			"include": "#numbers"
-		},
-		{
-			"include": "#default"
+			"include": "#unevaluated"
 		}
 	],
 	"repository": {
-		"evaluated": {
-			"name": "keyword.control.dkls",
-			"match": "\\b(IF|ELIF|ELSE|VAR|ALTCHAR|ALTCODE|DEFAULTDELAY|DEFAULT_DELAY|DELAY|NOTEXIST|NOT_EXIST|REPEAT|FOR|RUN|SHIFT|START|STARTENV|STARTCODE|WHILE|WHITESPACE)\\b"
-		},
-		"force-evaluated": {
-			"include": "#numbers #default",
-			"match": "\\$ *.*"
-		},
-		"keywords": {
-			"name": "keyword.control.dkls",
-			"match": "\\b(ALT|ALTSTRING|BREAKLOOP|BREAK_LOOP|CONTINUELOOP|CONTINUE_LOOP|CTRL|ENTER|EXIST|FUNC|FUNCTION|GUI|WINDOWS|META|IGNORE|MENU|PASS|PRINT|RETURN|RET|STRINGLN|STRING|SYSRQ)\\b *(.*)",
-			"ends": "(\\n|\\r)",
-			"captures": {
-				"2": {
-					"name": "string.quoted.double.dkls"
-				}
-			}
-		},
-		"stringblocks": {
-			"name": "string.quoted.double.dkls"
-		},
-		"specialoperators": {
-			"name": "keyword.operator.new",
-			"match": "(\\$|,|\\+|-|\\*|/|%|=|==)"
-		},
-		"numbers": {
-			"name": "constant.numeric",
-			"match": "[0-9]+"
-		},
-		"block-comments": {
-			"name": "comment.block",
-			"begin": "^(\\s*)REM\\b.*(\\n|\\r)",
+		"comments": {
+			"name": "comment.block.dkls",
+			"begin": "^(\\s*)REM\\b",
 			"end": "^(?!\\1\\s)(?!\\s*$)"
 		},
-		"line-comments": {
-			"name": "comment.line",
-			"match": "^REM\\b.*"
+		"block-commands": {
+			"name": "keyword.control.dkls",
+			"begin": "\\b(IF|ELIF|ELSE|VAR|ALTCHAR|ALTCODE|DEFAULTDELAY|DEFAULT_DELAY|DELAY|NOTEXIST|NOT_EXIST|REPEAT|FOR|WHILE|WHITESPACE|FUN|FUNCTION)\\b",
+			"end": "$",
+			"patterns": [
+				{"include": "#numbers"},
+				{"include": "#properties"},
+				{"include": "#operators"}
+			]
+		},
+		"simple-commands": {
+			"name": "keyword.control.dkls",
+			"begin": "^(\\s*)(CTRL-ALT|CTRL-SHIFT|CTRL|ALTSTRING|ALT-SHIFT|ALT-GUI|ALT|GUI-SHIFT|EXIST|IGNORE|RUN|SHIFT|START|STARTENV|STARTCODE)\\b",
+			"end": "^(?!\\1\\s)(?!\\s*$)",
+			"patterns": [
+				{"include": "#numbers"},
+				{"include": "#strings"},
+				{"include": "#operators"}
+			]
+		},
+		"force-evaluated": {
+			"name": "keyword.operator.new.dkls",
+			"begin": "^(\\s*)\\$",
+			"end": "^(?!\\1\\s)(?!\\s*$)",
+			"patterns": [
+				{
+					"name": "keyword.control.dkls",
+					"match": "(BREAKLOOP|BREAK_LOOP|CONTINUELOOP|CONTINUE_LOOP|ENTER|GUI|WINDOWS|META|MENU|PASS|RETURN|RET|STRINGLN|STRING|SYSRQ)\\b"
+				},
+				{"include": "#numbers"},
+				{"include": "#strings"},
+				{"include": "#operators"}
+			]
+		},
+		"string-evaluation": {
+			"name": "keyword.control.dkls",
+			"begin": "^(\\s*)(STRINGLN|STRING)\\b",
+			"end": "^(?!\\1\\s)(?!\\s*$)",
+			"patterns": [
+				{"include": "#strings"}
+			]
+		},
+		"unevaluated": {
+			"name": "keyword.control.dkls",
+			"match": "(BREAKLOOP|BREAK_LOOP|CONTINUELOOP|CONTINUE_LOOP|ENTER|GUI|WINDOWS|META|MENU|PASS|RETURN|RET|SYSRQ|UP|DOWN|LEFT|RIGHT|UPARROW|DOWNARROW|LEFTARROW|RIGHTARROW)\\b"
 		},
 		"strings": {
+			"name": "string.quoted.double.dkls",
+			"match": "."
+		},
+		"numbers": {
+			"name": "constant.numeric.dkls",
+			"match": "[0-9]+"
+		},
+		"properties": {
+			"name": "support.type.property-name.dkls",
+			"match": "[A-Za-z]"
+		},
+		"operators": {
+			"name": "keyword.operator.new.dkls",
+			"match": "(\\+|-|\\*|/|%|=|==)"
+		},
+		"qouted-strings": {
 			"name": "string.quoted.double.dkls",
 			"begin": "\"",
 			"end": "\"",
@@ -82,11 +100,6 @@
 					"match": "\\\\."
 				}
 			]
-		},
-		"default": {
-			"name": "support.type.property-name",
-			"match": "[A-Za-z]"
 		}
-	},
-	"scopeName": "source.ducklingscript"
+	}
 }

@@ -1,7 +1,7 @@
 {
   "name": "ducklingscript-language-support",
   "displayName": "DucklingScript Language Support",
-  "description": "Quick and dirty implamentation to add DucklingScript syntax and coding compatability to VSCode (do not use this as a reference I have no idea what I'm doing!).",
+  "description": "A basic implamentaton of DucklingScript syntax support to VSCode.",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.95.0"
@@ -9,11 +9,15 @@
   "categories": [
     "Programming Languages"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/deathhancox/ducklingscript-language-support.git"
+  },
   "contributes": {
     "languages": [{
       "id": "dkls",
       "aliases": ["DucklingScript", "dkls"],
-      "extensions": [".txt",".dkls"],
+      "extensions": [".dkls"],
       "configuration": "./language-configuration.json"
     }],
     "grammars": [{
