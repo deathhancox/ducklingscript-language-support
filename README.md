@@ -1,6 +1,7 @@
 ## Features
 
 A basic VSCode extension designed with the intent of implamenting syntax highlighting support for the DucklingScript Language.
+Further documentation for the language can be found [here](https://ducklingscript.dragonofshuu.dev).
 
 ## Known Issues
 
