@@ -7,9 +7,6 @@
 			"include": "#comments"
 		},
 		{
-			"include": "#simple-commands"
-		},
-		{
 			"include": "#block-commands"
 		},
 		{
@@ -23,6 +20,12 @@
 		},
 		{
 			"include": "#unevaluated"
+		},
+		{
+			"include": "#simple-commands"
+		},
+		{
+			"include": "#other-commands"
 		}
 	],
 	"repository": {
@@ -38,7 +41,7 @@
 			"patterns": [
 				{
 					"name": "keyword.control.dkls",
-					"match": "(BREAKLOOP|BREAK_LOOP|CONTINUELOOP|CONTINUE_LOOP|ENTER|GUI|WINDOWS|META|MENU|PASS|RETURN|RET|STRINGLN|STRING|SYSRQ)\\b"
+					"match": "[A-Z]+\\b"
 				},
 				{"include": "#numbers"},
 				{"include": "#operators"},
@@ -54,17 +57,6 @@
 				{"include": "#numbers"},
 				{"include": "#properties"},
 				{"include": "#operators"}
-			]
-		},
-		"simple-commands": {
-			"name": "keyword.control.dkls",
-			"begin": "^(\\s*)(CTRL-ALT|CTRL-SHIFT|CTRL|ALTSTRING|ALT-SHIFT|ALT-GUI|ALT|GUI-SHIFT|GUI|WINDOWS|META|EXIST|IGNORE|SHIFT|START|STARTENV|STARTCODE|ALTCHAR|ALTCODE|DEFAULTSTRINGDELAY|DEFAULTSTRINGDELAY|DEFAULTDELAY|DEFAULT_DELAY|DELAY|NOTEXIST|NOT_EXIST|WHITESPACE)\\b",
-			"end": "^(?!\\1\\s)(?!\\s*$)",
-			"patterns": [
-				{"include": "#numbers"},
-				{"include": "#operators"},
-				{"include": "#properties"},
-				{"include": "#strings"}
 			]
 		},
 		"property-evaluation": {
@@ -86,6 +78,25 @@
 		"unevaluated": {
 			"name": "keyword.control.dkls",
 			"match": "(BREAKLOOP|BREAK_LOOP|CONTINUELOOP|CONTINUE_LOOP|CONTINUE|ENTER|GUI|WINDOWS|META|MENU|PASS|RETURN|RET|SYSRQ|UP|DOWN|LEFT|RIGHT|UPARROW|DOWNARROW|LEFTARROW|RIGHTARROW)\\b"
+		},
+		"simple-commands": {
+			"name": "keyword.control.dkls",
+			"begin": "^(\\s*)(CTRL-ALT|CTRL-SHIFT|CTRL|ALTSTRING|ALT-SHIFT|ALT-GUI|ALT|GUI-SHIFT|GUI|WINDOWS|META|EXIST|IGNORE|SHIFT|START|STARTENV|STARTCODE|ALTCHAR|ALTCODE|DEFAULTSTRINGDELAY|DEFAULTSTRINGDELAY|DEFAULTDELAY|DEFAULT_DELAY|DELAY|NOTEXIST|NOT_EXIST|WHITESPACE)\\b",
+			"end": "^(?!\\1\\s)(?!\\s*$)",
+			"patterns": [
+				{"include": "#numbers"},
+				{"include": "#operators"},
+				{"include": "#properties"},
+				{"include": "#strings"}
+			]
+		},
+		"other-commands": {
+			"name": "keyword.control.dkls",
+			"begin": "^(\\s*)[A-Z]+\\b",
+			"end": "^(?!\\1\\s)(?!\\s*$)",
+			"patterns": [
+				{"include": "#strings"}
+			]
 		},
 		"strings": {
 			"name": "string.quoted.double.dkls",
