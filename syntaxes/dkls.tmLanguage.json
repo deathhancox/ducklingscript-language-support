@@ -16,13 +16,13 @@
 			"include": "#property-evaluation"
 		},
 		{
-			"include": "#string-evaluation"
+			"include": "#number-evaluation"
 		},
 		{
 			"include": "#unevaluated"
 		},
 		{
-			"include": "#simple-commands"
+			"include": "#default-evaluated"
 		},
 		{
 			"include": "#other-commands"
@@ -36,12 +36,12 @@
 		},
 		"force-evaluated": {
 			"name": "keyword.operator.new.dkls",
-			"begin": "(\\s*)\\$",
+			"begin": "^(\\s*)\\$",
 			"end": "^(?!\\1\\s)(?!\\s*$)",
 			"patterns": [
 				{
 					"name": "keyword.control.dkls",
-					"match": "[A-Z]+\\b"
+					"match": "[A-Z\\+\\-_]+\\b"
 				},
 				{"include": "#numbers"},
 				{"include": "#operators"},
@@ -51,48 +51,53 @@
 		},
 		"block-commands": {
 			"name": "keyword.control.dkls",
-			"begin": "\\b(IF|ELIF|ELSE|VAR|REPEAT|FOR|WHILE|FUNCTION|FUNC)\\b",
+			"begin": "^(\\s*)(IF|ELIF|ELSE|VAR|REPEAT|FOR|WHILE|FUNCTION|FUNC)\\b",
 			"end": "$",
 			"patterns": [
 				{"include": "#numbers"},
 				{"include": "#properties"},
-				{"include": "#operators"}
+				{"include": "#operators"},
+				{"include": "#quoted-strings"}
 			]
 		},
 		"property-evaluation": {
 			"name": "keyword.control.dkls",
-			"begin": "^(\\s*)(RUN)\\b",
+			"begin": "^(\\s*)(RUN|EXIST|NOTEXIST|NOT_EXIST)\\b",
 			"end": "^(?!\\1\\s)(?!\\s*$)",
 			"patterns": [
 				{"include": "#properties"}
 			]
 		},
-		"string-evaluation": {
+		"number-evaluation": {
 			"name": "keyword.control.dkls",
-			"begin": "^(\\s*)(STRINGLN|STRING)\\b",
+			"begin": "^(\\s*)(ALTCHAR)\\b",
 			"end": "^(?!\\1\\s)(?!\\s*$)",
 			"patterns": [
-				{"include": "#strings"}
+				{"include": "#numbers"}
 			]
 		},
 		"unevaluated": {
 			"name": "keyword.control.dkls",
-			"match": "(BREAKLOOP|BREAK_LOOP|CONTINUELOOP|CONTINUE_LOOP|CONTINUE|ENTER|GUI|WINDOWS|META|MENU|PASS|RETURN|RET|SYSRQ|UP|DOWN|LEFT|RIGHT|UPARROW|DOWNARROW|LEFTARROW|RIGHTARROW)\\b"
+			"begin": "^(\\s*)(BREAKLOOP|BREAK_LOOP|CONTINUELOOP|CONTINUE_LOOP|CONTINUE|ENTER|MENU|PASS|UP|DOWN|LEFT|RIGHT|UPARROW|DOWNARROW|LEFTARROW|RIGHTARROW)\\b",
+			"end": "$",
+			"patterns": [
+				{"include": "#all-invalid"}
+			]
 		},
-		"simple-commands": {
+		"default-evaluated": {
 			"name": "keyword.control.dkls",
-			"begin": "^(\\s*)(CTRL-ALT|CTRL-SHIFT|CTRL|ALTSTRING|ALT-SHIFT|ALT-GUI|ALT|GUI-SHIFT|GUI|WINDOWS|META|EXIST|IGNORE|SHIFT|START|STARTENV|STARTCODE|ALTCHAR|ALTCODE|DEFAULTSTRINGDELAY|DEFAULTSTRINGDELAY|DEFAULTDELAY|DEFAULT_DELAY|DELAY|NOTEXIST|NOT_EXIST|WHITESPACE)\\b",
+			"begin": "^(\\s*)(DEFAULTSTRINGDELAY|DEFAULTSTRINGDELAY|DEFAULTDELAY|DEFAULT_DELAY|DELAY|RETURN|RET|VAR|WHITESPACE)\\b",
 			"end": "^(?!\\1\\s)(?!\\s*$)",
 			"patterns": [
 				{"include": "#numbers"},
 				{"include": "#operators"},
 				{"include": "#properties"},
-				{"include": "#strings"}
+				{"include": "#quoted-strings"}
 			]
 		},
 		"other-commands": {
 			"name": "keyword.control.dkls",
-			"begin": "^(\\s*)[A-Z]+\\b",
+			"begin": "^(\\s*)[A-Z\\+\\-_]+\\b",
 			"end": "^(?!\\1\\s)(?!\\s*$)",
 			"patterns": [
 				{"include": "#strings"}
@@ -108,7 +113,7 @@
 		},
 		"properties": {
 			"name": "support.type.property-name.dkls",
-			"match": "[A-Za-z0-9_]"
+			"match": "\\$?[A-Za-z0-9_]"
 		},
 		"operators": {
 			"name": "keyword.operator.new.dkls",
@@ -124,6 +129,10 @@
 					"match": "\\\\."
 				}
 			]
+		},
+		"all-invalid": {
+			"name": "invalid.illegal.dkls",
+			"match": "."
 		}
 	}
 }
