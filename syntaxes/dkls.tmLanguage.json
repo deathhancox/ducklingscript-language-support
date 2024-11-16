@@ -63,6 +63,7 @@
 			"patterns": [
 				{"include": "#numbers"},
 				{"include": "#operators"},
+				{"include": "#properties"},
 				{"include": "#strings"}
 			]
 		},
