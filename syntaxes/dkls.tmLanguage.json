@@ -86,7 +86,7 @@
 		},
 		"default-evaluated": {
 			"name": "keyword.control.dkls",
-			"begin": "^(\\s*)(DEFAULTSTRINGDELAY|DEFAULTSTRINGDELAY|DEFAULTDELAY|DEFAULT_DELAY|DELAY|RETURN|RET|VAR|WHITESPACE)\\b",
+			"begin": "^(\\s*)(DEFAULTSTRINGDELAY|DEFAULT_STRING_DELAY|STRINGDELAY|STRING_DELAY|DEFAULTDELAY|DEFAULT_DELAY|DELAY|RETURN|RET|VAR|WHITESPACE)\\b",
 			"end": "^(?!\\1\\s)(?!\\s*$)",
 			"patterns": [
 				{"include": "#numbers"},
