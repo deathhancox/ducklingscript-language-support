@@ -16,6 +16,9 @@
 			"include": "#force-evaluated"
 		},
 		{
+			"include": "#property-evaluation"
+		},
+		{
 			"include": "#string-evaluation"
 		},
 		{
@@ -28,9 +31,24 @@
 			"begin": "^(\\s*)REM\\b",
 			"end": "^(?!\\1\\s)(?!\\s*$)"
 		},
+		"force-evaluated": {
+			"name": "keyword.operator.new.dkls",
+			"begin": "(\\s*)\\$",
+			"end": "^(?!\\1\\s)(?!\\s*$)",
+			"patterns": [
+				{
+					"name": "keyword.control.dkls",
+					"match": "(BREAKLOOP|BREAK_LOOP|CONTINUELOOP|CONTINUE_LOOP|ENTER|GUI|WINDOWS|META|MENU|PASS|RETURN|RET|STRINGLN|STRING|SYSRQ)\\b"
+				},
+				{"include": "#numbers"},
+				{"include": "#operators"},
+				{"include": "#properties"},
+				{"include": "#quoted-strings"}
+			]
+		},
 		"block-commands": {
 			"name": "keyword.control.dkls",
-			"begin": "\\b(IF|ELIF|ELSE|VAR|ALTCHAR|ALTCODE|DEFAULTDELAY|DEFAULT_DELAY|DELAY|NOTEXIST|NOT_EXIST|REPEAT|FOR|WHILE|WHITESPACE|FUN|FUNCTION)\\b",
+			"begin": "\\b(IF|ELIF|ELSE|VAR|REPEAT|FOR|WHILE|FUNCTION|FUNC)\\b",
 			"end": "$",
 			"patterns": [
 				{"include": "#numbers"},
@@ -40,26 +58,20 @@
 		},
 		"simple-commands": {
 			"name": "keyword.control.dkls",
-			"begin": "^(\\s*)(CTRL-ALT|CTRL-SHIFT|CTRL|ALTSTRING|ALT-SHIFT|ALT-GUI|ALT|GUI-SHIFT|EXIST|IGNORE|RUN|SHIFT|START|STARTENV|STARTCODE)\\b",
+			"begin": "^(\\s*)(CTRL-ALT|CTRL-SHIFT|CTRL|ALTSTRING|ALT-SHIFT|ALT-GUI|ALT|GUI-SHIFT|GUI|WINDOWS|META|EXIST|IGNORE|SHIFT|START|STARTENV|STARTCODE|ALTCHAR|ALTCODE|DEFAULTSTRINGDELAY|DEFAULTSTRINGDELAY|DEFAULTDELAY|DEFAULT_DELAY|DELAY|NOTEXIST|NOT_EXIST|WHITESPACE)\\b",
 			"end": "^(?!\\1\\s)(?!\\s*$)",
 			"patterns": [
 				{"include": "#numbers"},
-				{"include": "#strings"},
-				{"include": "#operators"}
+				{"include": "#operators"},
+				{"include": "#strings"}
 			]
 		},
-		"force-evaluated": {
-			"name": "keyword.operator.new.dkls",
-			"begin": "^(\\s*)\\$",
+		"property-evaluation": {
+			"name": "keyword.control.dkls",
+			"begin": "^(\\s*)(RUN)\\b",
 			"end": "^(?!\\1\\s)(?!\\s*$)",
 			"patterns": [
-				{
-					"name": "keyword.control.dkls",
-					"match": "(BREAKLOOP|BREAK_LOOP|CONTINUELOOP|CONTINUE_LOOP|ENTER|GUI|WINDOWS|META|MENU|PASS|RETURN|RET|STRINGLN|STRING|SYSRQ)\\b"
-				},
-				{"include": "#numbers"},
-				{"include": "#strings"},
-				{"include": "#operators"}
+				{"include": "#properties"}
 			]
 		},
 		"string-evaluation": {
@@ -72,7 +84,7 @@
 		},
 		"unevaluated": {
 			"name": "keyword.control.dkls",
-			"match": "(BREAKLOOP|BREAK_LOOP|CONTINUELOOP|CONTINUE_LOOP|ENTER|GUI|WINDOWS|META|MENU|PASS|RETURN|RET|SYSRQ|UP|DOWN|LEFT|RIGHT|UPARROW|DOWNARROW|LEFTARROW|RIGHTARROW)\\b"
+			"match": "(BREAKLOOP|BREAK_LOOP|CONTINUELOOP|CONTINUE_LOOP|ENTER|MENU|PASS|RETURN|RET|SYSRQ|UP|DOWN|LEFT|RIGHT|UPARROW|DOWNARROW|LEFTARROW|RIGHTARROW)\\b"
 		},
 		"strings": {
 			"name": "string.quoted.double.dkls",
@@ -84,13 +96,13 @@
 		},
 		"properties": {
 			"name": "support.type.property-name.dkls",
-			"match": "[A-Za-z]"
+			"match": "[A-Za-z0-9_]"
 		},
 		"operators": {
 			"name": "keyword.operator.new.dkls",
-			"match": "(\\+|-|\\*|/|%|=|==)"
+			"match": "(\\+|-|\\*|/|%|=|==|\\,)"
 		},
-		"qouted-strings": {
+		"quoted-strings": {
 			"name": "string.quoted.double.dkls",
 			"begin": "\"",
 			"end": "\"",
