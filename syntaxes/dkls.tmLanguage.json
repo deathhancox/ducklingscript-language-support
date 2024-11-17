@@ -7,10 +7,13 @@
 			"include": "#comments"
 		},
 		{
+			"include": "#forced-evaluation"
+		},
+		{
 			"include": "#block-commands"
 		},
 		{
-			"include": "#force-evaluated"
+			"include": "#property-arg-evaluation"
 		},
 		{
 			"include": "#property-evaluation"
@@ -19,10 +22,10 @@
 			"include": "#number-evaluation"
 		},
 		{
-			"include": "#unevaluated"
+			"include": "#default-evaluation"
 		},
 		{
-			"include": "#default-evaluated"
+			"include": "#unevaluated"
 		},
 		{
 			"include": "#other-commands"
@@ -34,7 +37,7 @@
 			"begin": "^(\\s*)REM\\b",
 			"end": "^(?!\\1\\s)(?!\\s*$)"
 		},
-		"force-evaluated": {
+		"forced-evaluation": {
 			"name": "keyword.operator.new.dkls",
 			"begin": "^(\\s*)\\$",
 			"end": "^(?!\\1\\s)(?!\\s*$)",
@@ -55,14 +58,30 @@
 			"end": "$",
 			"patterns": [
 				{"include": "#numbers"},
-				{"include": "#properties"},
 				{"include": "#operators"},
+				{"include": "#quoted-strings"},
+				{"include": "#properties"}
+			]
+		},
+		"property-arg-evaluation": {
+			"name": "keyword.control.dkls",
+			"begin": "^(\\s*)(RUN)\\b",
+			"end": "^(?!\\1\\s)(?!\\s*$)",
+			"patterns": [
+				{
+					"name": "support.type.property-name.dkls",
+					"begin": "(?<!^)\\s\\b[a-zA-Z0-9_]+\\b",
+					"end": "[\\s\\S]"
+				},
+				{"include": "#numbers"},
+				{"include": "#operators"},
+				{"include": "#properties"},
 				{"include": "#quoted-strings"}
 			]
 		},
 		"property-evaluation": {
 			"name": "keyword.control.dkls",
-			"begin": "^(\\s*)(RUN|EXIST|NOTEXIST|NOT_EXIST)\\b",
+			"begin": "^(\\s*)(EXIST|NOTEXIST|NOT_EXIST|STARTENV|STARTCODE|START)\\b",
 			"end": "^(?!\\1\\s)(?!\\s*$)",
 			"patterns": [
 				{"include": "#properties"}
@@ -76,15 +95,7 @@
 				{"include": "#numbers"}
 			]
 		},
-		"unevaluated": {
-			"name": "keyword.control.dkls",
-			"begin": "^(\\s*)(BREAKLOOP|BREAK_LOOP|CONTINUELOOP|CONTINUE_LOOP|CONTINUE|ENTER|MENU|PASS|UP|DOWN|LEFT|RIGHT|UPARROW|DOWNARROW|LEFTARROW|RIGHTARROW)\\b",
-			"end": "$",
-			"patterns": [
-				{"include": "#all-invalid"}
-			]
-		},
-		"default-evaluated": {
+		"default-evaluation": {
 			"name": "keyword.control.dkls",
 			"begin": "^(\\s*)(DEFAULTSTRINGDELAY|DEFAULT_STRING_DELAY|STRINGDELAY|STRING_DELAY|DEFAULTDELAY|DEFAULT_DELAY|DELAY|RETURN|RET|VAR|WHITESPACE)\\b",
 			"end": "^(?!\\1\\s)(?!\\s*$)",
@@ -93,6 +104,14 @@
 				{"include": "#operators"},
 				{"include": "#properties"},
 				{"include": "#quoted-strings"}
+			]
+		},
+		"unevaluated": {
+			"name": "keyword.control.dkls",
+			"begin": "^(\\s*)(BREAKLOOP|BREAK_LOOP|CONTINUELOOP|CONTINUE_LOOP|CONTINUE|ENTER|MENU|PASS|UP|DOWN|LEFT|RIGHT|UPARROW|DOWNARROW|LEFTARROW|RIGHTARROW)\\b",
+			"end": "$",
+			"patterns": [
+				{"include": "#all-invalid"}
 			]
 		},
 		"other-commands": {
@@ -113,11 +132,11 @@
 		},
 		"properties": {
 			"name": "support.type.property-name.dkls",
-			"match": "\\$?[A-Za-z0-9_]"
+			"match": "[A-Za-z0-9_\\.]"
 		},
 		"operators": {
 			"name": "keyword.operator.new.dkls",
-			"match": "(\\+|-|\\*|/|%|=|==|\\,)"
+			"match": "(\\$|\\+|-|\\*|/|%|=|==|\\,)"
 		},
 		"quoted-strings": {
 			"name": "string.quoted.double.dkls",
