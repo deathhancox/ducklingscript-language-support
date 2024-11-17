@@ -1,16 +1,18 @@
 ## Description
-![Static Badge](https://img.shields.io/badge/DragonofShuu.ducklingscript-language-support)
+
+![DucklingScript Header](static/header.png)
+![DucklingScript Extension Id](https://img.shields.io/badge/DragonofShuu.ducklingscript-language-support)
 ![Visual Studio Marketplace Downloads](https://img.shields.io/visual-studio-marketplace/d/DragonofShuu.ducklingscript-language-support)
 
-![alt text](resources/DucklingScriptHeader.png)
+A basic VSCode extension designed with the intent of implementing syntax highlighting support for the DucklingScript Language.
 
-A basic VSCode extension designed with the intent of implamenting syntax highlighting support for the DucklingScript Language.
+DucklingScript is a language that ccompiles down into Rubber Ducky 1.0, adding important programmatic features. 
 
 Further documentation for the language can be found [here](https://ducklingscript.dragonofshuu.dev).
 
 ## [Features]
 ### Type Safety
-With our professional poultry already compiling each line, DucklingScript preemptively validates your code will work for your hardware. And if there are any errors they'll helpfully point out where and why!
+With our professional quackers already compiling each line, DucklingScript preemptively validates your code will work for your hardware. And if there are any errors they'll helpfully point out where and why!
 
 ### Flow Control
 While the Rubber Ducky Scripting Language 1.0 and even the Flipper's implementation don't add any flow control, our feathered friends give you the power to swim back around with the implementation of if statements, for/while loops, breakloop, and more!

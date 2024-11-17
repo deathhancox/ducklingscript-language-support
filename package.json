@@ -1,9 +1,9 @@
 {
   "name": "ducklingscript-language-support",
   "displayName": "DucklingScript Language for VSCode",
-  "description": "A basic implamentaton of DucklingScript syntax support to VSCode.",
+  "description": "A basic implementaton of DucklingScript syntax support to VSCode.",
   "publisher": "DragonOfShuu",
-  "version": "0.0.1",
+  "version": "0.1",
   "engines": {
     "vscode": "^1.95.0"
   },
@@ -30,5 +30,6 @@
       "scopeName": "source.ducklingscript",
       "path": "./syntaxes/dkls.tmLanguage.json"
     }]
-  }
+  },
+  "icon": "./static/extension-icon.png"
 }
