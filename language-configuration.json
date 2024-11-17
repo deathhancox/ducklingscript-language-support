@@ -22,7 +22,7 @@
     ],
     "onEnterRules": [
         {
-            "beforeText": "^(\\s*)(IF|ELIF|ELSE|VAR|REPEAT|FOR|WHILE|FUNCTION|FUNC)",
+            "beforeText": "^(\\s*)(IF|ELIF|ELSE|VAR|REPEAT|FOR|WHILE|FUNCTION|FUNC)\b",
             "action": {
                 "indent": "indent"
             }

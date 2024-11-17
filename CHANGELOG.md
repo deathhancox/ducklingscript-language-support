@@ -1,9 +1,11 @@
-# Change Log
+# Change Log![icon](resources/logo.png)
 
 All notable changes to the "ducklingscript-language-support" extension will be documented in this file.
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+## [Initial Release | V1.0.0]
+### Added
+- v1.0.0 Syntax highlighting.
 
-## [Unreleased]
-
-- Initial release
+## [V1.0.1]
+### Changed
+- README and CHANGELOG.
