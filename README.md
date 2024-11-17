@@ -9,9 +9,6 @@ Further documentation for the language can be found [here](https://ducklingscrip
 None currently, please let us know if you find any!
 
 ## Release Notes
-
-Users appreciate release notes as you update your extension.
-
 ### 1.0.0
 
 Initial release of DucklingScript Language Support
