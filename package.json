@@ -1,7 +1,8 @@
 {
   "name": "ducklingscript-language-support",
-  "displayName": "DucklingScript Language Support",
+  "displayName": "DucklingScript Language for VSCode",
   "description": "A basic implamentaton of DucklingScript syntax support to VSCode.",
+  "publisher": "DragonOfShuu",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.95.0"
