@@ -1,4 +1,7 @@
 {
+    "comments": {
+        "lineComment": "REM"
+    },
     // symbols used as brackets
     "brackets": [
         ["{", "}"],
@@ -17,11 +20,12 @@
         ["'", "'"],
         ["\"", "\""]
     ],
-    // "indentationRules": {
-    //     "increaseIndentPattern": "",
-    //     "decreaseIndentPattern": ""
-    // },
-    // "folding": {
-    //     "offSide": true
-    // }
+    "onEnterRules": [
+        {
+            "beforeText": "^(\\s*)(IF|ELIF|ELSE|VAR|REPEAT|FOR|WHILE|FUNCTION|FUNC)",
+            "action": {
+                "indent": "indent"
+            }
+        }
+    ]
 }

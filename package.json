@@ -18,7 +18,11 @@
       "id": "dkls",
       "aliases": ["DucklingScript", "dkls"],
       "extensions": [".dkls"],
-      "configuration": "./language-configuration.json"
+      "configuration": "./language-configuration.json",
+      "icon": {
+        "dark": "./static/dark-file-icon.png",
+        "light": "./static/light-file-icon.png"
+      }
     }],
     "grammars": [{
       "language": "dkls",
