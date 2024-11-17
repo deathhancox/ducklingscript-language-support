@@ -3,7 +3,7 @@
   "displayName": "DucklingScript Language for VSCode",
   "description": "A basic implementaton of DucklingScript syntax support to VSCode.",
   "publisher": "DragonOfShuu",
-  "version": "0.1",
+  "version": "0.1.0",
   "engines": {
     "vscode": "^1.95.0"
   },
