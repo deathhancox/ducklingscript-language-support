@@ -20,12 +20,8 @@
         ["'", "'"],
         ["\"", "\""]
     ],
-    "onEnterRules": [
-        {
-            "beforeText": "^(\\s*)(IF|ELIF|ELSE|VAR|REPEAT|FOR|WHILE|FUNCTION|FUNC)\b",
-            "action": {
-                "indent": "indent"
-            }
-        }
-    ]
+    "indentationRules": {
+        "increaseIndentPattern": "^(\\s*)(IF|ELIF|ELSE|VAR|REPEAT|FOR|WHILE|FUNCTION|FUNC)\\b",
+        "decreaseIndentPattern": "^(\\s*)(RETURN|BREAK|CONTINUE)\\b"
+    }
 }
