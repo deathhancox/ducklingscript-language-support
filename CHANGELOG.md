@@ -1,11 +1,10 @@
-# Change Log!
+# Change Log
 
-All notable changes to the "ducklingscript-language-support" extension will be documented in this file.
+## 0.2.0
+- Indentation is now properly supported
 
-## [Initial Release | V1.0.0]
-### Added
-- v1.0.0 Syntax highlighting.
-
-## [V1.0.1]
-### Changed
+## 0.1.0
 - README and CHANGELOG.
+
+## Initial Release 0.0.1
+- v1.0.0 Syntax highlighting
