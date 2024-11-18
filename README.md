@@ -1,6 +1,6 @@
-## Description
-
 ![DucklingScript Header](https://github.com/deathhancox/ducklingscript-language-support/blob/master/.github/header.png?raw=true)
+
+
 ![DucklingScript Extension Id](https://img.shields.io/badge/DragonofShuu.ducklingscript-language-support)
 ![Visual Studio Marketplace Downloads](https://img.shields.io/visual-studio-marketplace/d/DragonofShuu.ducklingscript-language-support)
 
