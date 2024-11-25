@@ -20,8 +20,19 @@
         ["'", "'"],
         ["\"", "\""]
     ],
-    "indentationRules": {
-        "increaseIndentPattern": "^(\\s*)(IF|ELIF|ELSE|VAR|REPEAT|FOR|WHILE|FUNCTION|FUNC)\\b",
-        "decreaseIndentPattern": "^(\\s*)(RETURN|BREAK|CONTINUE)\\b"
-    }
+    "onEnterRules": [
+        {
+            "beforeText": "^(\\s*)(IF|ELIF|ELSE|VAR|REPEAT|FOR|WHILE|FUNCTION|FUNC)\\b",
+            "action": {
+                "indent": "indent",
+            }
+        },
+        {
+            "beforeText": "^(\\s*)(RETURN|BREAKLOOP|BREAK_LOOP|CONTINUE|CONTINUE_LOOP|CONTINUELOOP)\\b",
+            "action": {
+                "indent": "outdent",
+            }
+        }
+    ],
+    "wordPattern": "\\b[a-zA-Z_]\\w*\\b"
 }
