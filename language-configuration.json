@@ -1,6 +1,9 @@
 {
     "comments": {
-        "lineComment": "REM"
+        "lineComment": {
+            "comment": "REM",
+            "noIndent": false
+        }
     },
     // symbols used as brackets
     "brackets": [

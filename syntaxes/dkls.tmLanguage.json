@@ -98,7 +98,7 @@
 		},
 		"file-evaluation": {
 			"name": "keyword.control.dkls.file-eval",
-			"begin": "^(\\s*)(STARTENV|STARTCODE|START)\\s+",
+			"begin": "^(\\s*)(STARTENV|STARTCODE|START|IMPORT)\\s+",
 			"end": "^(?!\\1\\s)(?!\\s*$)",
 			"patterns": [
 				{
@@ -160,7 +160,7 @@
 		},
 		"properties": {
 			"name": "variable.name.dkls",
-			"match": "[A-Za-z_]\\w*"
+			"match": "[A-Za-z_\\.]\\w*"
 		},
 		"operators": {
 			"name": "keyword.operator.dkls",
